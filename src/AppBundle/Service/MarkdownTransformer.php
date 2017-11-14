@@ -2,20 +2,17 @@
 
 namespace AppBundle\Service;
 
-
-
 use Doctrine\Common\Cache\Cache;
 use Knp\Bundle\MarkdownBundle\MarkdownParserInterface;
-use Knp\Bundle\MarkdownBundle\Parser\MarkdownParser;
 
 class MarkdownTransformer
 {
-    private $markDownParser;
+    private $markdownParser;
     private $cache;
 
-    public function __construct(MarkdownParserInterface $markDownParser, Cache $cache)
+    public function __construct(MarkdownParserInterface $markdownParser, Cache $cache)
     {
-        $this->markDownParser = $markDownParser;
+        $this->markdownParser = $markdownParser;
         $this->cache = $cache;
     }
 
@@ -27,7 +24,7 @@ class MarkdownTransformer
             return $cache->fetch($key);
         }
 
-        $str = $this->markDownParser
+        $str = $this->markdownParser
             ->transformMarkdown($str);
         $cache->save($key, $str);
 

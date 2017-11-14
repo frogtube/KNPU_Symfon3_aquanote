@@ -45,7 +45,7 @@ class Genus
 
     /**
      * @ORM\OneToMany(targetEntity="GenusNote", mappedBy="genus")
-     * @ORM\OrderBy({"createdAt"="DESC"})
+     * @ORM\OrderBy({})
      */
     private $notes;
 
@@ -104,7 +104,7 @@ class Genus
      */
     public function getFunFact()
     {
-        return $this->funFact;
+        return '**TEST**' . $this->funFact;
     }
 
     /**
